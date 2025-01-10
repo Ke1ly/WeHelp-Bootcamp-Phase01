@@ -1,0 +1,274 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+body {
+  font-size: 20px;
+}
+body nav {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 7;
+}
+body nav section.left {
+  margin: 0.5rem 1rem;
+}
+body nav section.right {
+  margin: 0.5rem 1rem;
+}
+body nav section.right ul {
+  display: flex;
+}
+body nav section.right ul li {
+  list-style: none;
+}
+body nav section.right ul li a {
+  margin: 0rem 1rem;
+  text-decoration: none;
+  color: black;
+}
+body nav section.hamburger-icon {
+  display: none;
+  justify-content: right;
+  margin: 0.5rem 1rem;
+  cursor: pointer;
+}
+body nav section.hamburger-menu {
+  display: none;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  height: 100vh;
+  width: 40%;
+  background-color: rgb(255, 255, 255);
+  z-index: 99;
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+}
+body nav section.hamburger-menu i {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 1.25rem;
+  font-size: 17px;
+  cursor: pointer;
+}
+body nav section.hamburger-menu ul {
+  margin: 4rem 0rem;
+}
+body nav section.hamburger-menu ul li {
+  list-style: none;
+}
+body nav section.hamburger-menu ul li a {
+  display: block;
+  padding: 0.75rem;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+}
+body header {
+  height: 250px;
+  text-align: center;
+  background-color: rgb(217, 233, 237);
+}
+body header h3 {
+  font-size: 2em;
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+body main {
+  width: 1200px;
+  margin-inline: auto;
+}
+body main section.promo {
+  display: flex;
+  margin-top: 10px;
+}
+body main section.promo div.promo {
+  display: flex;
+  flex-grow: 1;
+  background-color: rgb(217, 233, 237);
+  margin: 10px;
+}
+body main section.promo div.promo img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 50px;
+  width: 80px;
+}
+body main section.promo div.promo p {
+  margin-left: 1rem;
+  margin-block: auto;
+}
+body main section.title {
+  display: flex;
+  flex-wrap: wrap;
+}
+body main section.title div.title {
+  height: 190px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+body main section.title div.title p {
+  width: 100%;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.65);
+  padding: 0.25rem;
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+}
+body main section.title div.title i {
+  margin: 0.5rem;
+  color: rgba(255, 234, 128, 0.6);
+  cursor: pointer;
+}
+body main section.title div.title1 {
+  flex-basis: 380px;
+  background-image: url("../img/t1.jpg");
+  background-size: cover;
+  background-position: center -50px;
+}
+body main section.title div.title2 {
+  background-image: url("../img/t2.jpg");
+  background-size: cover;
+  background-position: top;
+}
+body main section.title div.title3 {
+  background-image: url("../img/t3.jpg");
+  background-size: cover;
+  background-position: center -60px;
+}
+body main section.title div.title4 {
+  background-image: url("../img/t4.jpg");
+  background-size: cover;
+  background-position: center -60px;
+}
+body main section.title div.title5 {
+  background-image: url("../img/t5.jpg");
+  background-size: cover;
+  background-position: center 0px;
+}
+body main section.title div.title2,
+body main section.title div.title3,
+body main section.title div.title4,
+body main section.title div.title5,
+body main section.title div.title7,
+body main section.title div.title8,
+body main section.title div.title9,
+body main section.title div.title10 {
+  flex-basis: 180px;
+}
+body main section.title div.title6 {
+  flex-basis: 380px;
+  background-image: url("../img/t6.jpg");
+  background-size: cover;
+  background-position: center -40px;
+}
+body main section.title div.title7 {
+  background-image: url("../img/t7.jpg");
+  background-size: cover;
+  background-position: center -15px;
+}
+body main section.title div.title8 {
+  background-image: url("../img/t8.jpg");
+  background-size: cover;
+  background-position: top;
+}
+body main section.title div.title9 {
+  background-image: url("../img/t9.jpg");
+  background-size: cover;
+  background-position: center -30px;
+}
+body main section.title div.title10 {
+  background-image: url("../img/t10.jpg");
+  background-size: cover;
+  background-position: center -50px;
+}
+
+@media (max-width: 1200px) {
+  body nav section.hamburger-icon {
+    display: none;
+  }
+  body nav section.hamburger-menu {
+    display: none;
+  }
+  body main {
+    width: 90%;
+  }
+  body main section.promo {
+    flex-wrap: wrap;
+  }
+  body main section.promo div.promo1,
+  body main section.promo div.promo2 {
+    flex: 1 1 240px;
+  }
+  body main section.promo div.promo3 {
+    flex: 1 1 600px;
+  }
+  body main section.title div.title1,
+  body main section.title div.title2,
+  body main section.title div.title3,
+  body main section.title div.title4,
+  body main section.title div.title5,
+  body main section.title div.title6,
+  body main section.title div.title7,
+  body main section.title div.title8 {
+    flex: 1 1 20%;
+  }
+  body main section.title div.title9,
+  body main section.title div.title10 {
+    flex: 1 1 45%;
+  }
+  body main section.title div.title {
+    background-position: center;
+  }
+}
+@media (max-width: 600px) {
+  body nav section.right {
+    display: none;
+  }
+  body nav section.hamburger-icon {
+    display: block;
+  }
+  body main section.promo div.promo {
+    flex: 1 1 100%;
+  }
+  body main section.title div.title {
+    flex: 1 1 100%;
+  }
+  body main section.title div.title1 {
+    background-position: 50% 70%;
+  }
+  body main section.title div.title2 {
+    background-position: 50% 20%;
+  }
+  body main section.title div.title3 {
+    background-position: 50% 80%;
+  }
+  body main section.title div.title5 {
+    background-position: 50% 45%;
+  }
+  body main section.title div.title7 {
+    background-position: 50% 35%;
+  }
+  body main section.title div.title8 {
+    background-position: 50% 20%;
+  }
+  body main section.title div.title9 {
+    background-position: 50% 20%;
+  }
+  body main section.title div.title10 {
+    background-position: 50% 65%;
+  }
+}/*# sourceMappingURL=style.css.map */
