@@ -44,11 +44,11 @@ messages = {
 "Vivian":"I'm at Xindian station waiting for you."
 }
 
-# find_and_print(messages, "Wanlong") # print Mary
-# find_and_print(messages,"Songshan") # print Copper
-# find_and_print(messages,"Qizhang") # print Leslie
-# find_and_print(messages,"Ximen") # print Bob
-# find_and_print(messages,"Xindian City Hall") # print Vivian
+find_and_print(messages, "Wanlong") # print Mary
+find_and_print(messages,"Songshan") # print Copper
+find_and_print(messages,"Qizhang") # print Leslie
+find_and_print(messages,"Ximen") # print Bob
+find_and_print(messages,"Xindian City Hall") # print Vivian
 
 #Task02
 consultants = [
@@ -84,13 +84,13 @@ def book(consultants, hour, duration, criteria):
                 print (consultant["name"])
                 del consultant["time"][consultant["time"].index(hour):consultant["time"].index(hour + duration)]
 
-# book(consultants, 15, 1,"price") # Jenny
-# book(consultants, 11, 2,"price") # Jenny
-# book(consultants, 10, 2,"price") # John
-# book(consultants, 20, 2,"rate") # John
-# book(consultants, 11, 1,"rate") # Bob
-# book(consultants, 11, 2,"rate") # No Service
-# book(consultants, 14, 3,"price") # John
+book(consultants, 15, 1,"price") # Jenny
+book(consultants, 11, 2,"price") # Jenny
+book(consultants, 10, 2,"price") # John
+book(consultants, 20, 2,"rate") # John
+book(consultants, 11, 1,"rate") # Bob
+book(consultants, 11, 2,"rate") # No Service
+book(consultants, 14, 3,"price") # John
 
 #Task03
 def func(*data):
@@ -115,10 +115,10 @@ def func(*data):
     else:
         print (list(name_middle_word.keys())[list(name_middle_word.values()).index(specific)])
 
-# func("彭大牆","陳王明雅","吳明") # print 彭大牆
-# func("郭靜雅","王立強","郭林靜宜","郭立恆","林花花") # print 林花花
-# func("郭宣雅","林靜宜","郭宣恆","林靜花") # print 沒有
-# func("郭宣雅","夏曼藍波安","郭宣恆") # print 夏曼藍波安
+func("彭大牆","陳王明雅","吳明") # print 彭大牆
+func("郭靜雅","王立強","郭林靜宜","郭立恆","林花花") # print 林花花
+func("郭宣雅","林靜宜","郭宣恆","林靜花") # print 沒有
+func("郭宣雅","夏曼藍波安","郭宣恆") # print 夏曼藍波安
 
 
 #Task04
@@ -132,10 +132,10 @@ def get_number(index):
              sum-=1
         i+=1
     print(sum)
-# get_number(1) # print 4
-# get_number(5) # print 15
-# get_number(10) # print 25
-# get_number(30) # print 70
+get_number(1) # print 4
+get_number(5) # print 15
+get_number(10) # print 25
+get_number(30) # print 70
 
 
 #Task05
