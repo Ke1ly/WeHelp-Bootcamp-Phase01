@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>week02tasks</title>
+  </head>
+  <body>
+    <script>
+      //task01
+      function findAndPrint(messages, currentStation) {
+        let stations = [
+          "Songshan",
+          "Nanjing Sanmin",
+          "Taipei Arena",
+          "Nanjing Fuxing",
+          "Songjiang Nanjing",
+          "Zhongshan",
+          "Beimen",
+          "Ximen",
+          "Xiaonanmen",
+          "Chiang Kai-Shek Memorial Hall",
+          "Guting",
+          "Taipower Building",
+          "Gongguan",
+          "Wanlong",
+          "Jingmei",
+          "Dapinglin",
+          "Qizhang",
+          "Xiaobitan",
+          "Qizhang",
+          "Xindian City Hall",
+          "Xindian",
+        ];
+        //從每個人的訊息中抓取站名，接著計算其與給定車站之間的距離，存入 differences 中
+        let differences = [];
+        for (let i = 0; i < Object.values(messages).length; i++) {
+          for (let j = 0; j < stations.length; j++) {
+            if (Object.values(messages)[i].includes(stations[j])) {
+              if (
+                stations[j] == "Xindian City Hall" ||
+                stations[j] == "Xindian"
+              ) {
+                differences.push(
+                  Math.abs(j - stations.indexOf(currentStation)) - 2
+                );
+              } else {
+                differences.push(
+                  Math.abs(j - stations.indexOf(currentStation))
+                );
+              }
+            }
+          }
+        }
+        // 取 differences 中值最小者，並印出它的人名
+        console.log(
+          Object.keys(messages)[differences.indexOf(Math.min(...differences))]
+        );
+      }
+
+      const messages = {
+        Bob: "I'm at Ximen MRT station.",
+        Mary: "I have a drink near Jingmei MRT station.",
+        Copper: "I just saw a concert at Taipei Arena.",
+        Leslie: "I'm at home near Xiaobitan station.",
+        Vivian: "I'm at Xindian station waiting for you.",
+      };
+
+      findAndPrint(messages, "Wanlong"); //print Mary
+      findAndPrint(messages, "Songshan"); //print Copper
+      findAndPrint(messages, "Qizhang"); //print Leslie
+      findAndPrint(messages, "Ximen"); //print Bob
+      findAndPrint(messages, "Xindian City Hall"); //print Vivian
+
+      //task02
+
+      const consultants = [
+        { name: "John", rate: 4.5, price: 1000 },
+        { name: "Bob", rate: 3, price: 1200 },
+        { name: "Jenny", rate: 3.8, price: 800 },
+      ];
+      //為每位 consultants 建立可預約時間表
+      for (let i = 0; i < consultants.length; i++) {
+        consultants[i].time = [
+          8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
+        ];
+      }
+
+      function book(consultants, hour, duration, criteria) {
+        //選出在預約時段有空的 consultants，並將其 criteria 儲存至 candidates
+        let candidates = [];
+        let value;
+        let elected;
+        consultants.forEach((consultant) => {
+          for (let i = 0; i < duration; i++) {
+            if (!consultant.time.includes(hour + i)) {
+              return false;
+            }
+          }
+          candidates.push(consultant[criteria]);
+        });
+
+        //從 candidates 中依據不同 criteria，篩選出最適合者
+        //並從當選者的「可預約時間」中扣除本次預約時段
+        if (candidates == "") {
+          console.log("No Service");
+        } else {
+          if (criteria == "price") {
+            value = Math.min(...candidates);
+          } else {
+            value = Math.max(...candidates);
+          }
+          consultants.forEach((consultant) => {
+            if (consultant[criteria] == value) {
+              console.log(consultant["name"]);
+              consultant.time.splice(consultant.time.indexOf(hour), duration);
+            }
+          });
+        }
+      }
+
+      book(consultants, 15, 1, "price"); // Jenny
+      book(consultants, 11, 2, "price"); // Jenny
+      book(consultants, 10, 2, "price"); // John
+      book(consultants, 20, 2, "rate"); // John
+      book(consultants, 11, 1, "rate"); // Bob
+      book(consultants, 11, 2, "rate"); // No Service
+      book(consultants, 14, 3, "price"); // John
+
+      //task03
+
+      function func(...data) {
+        //取出所有名字的中間字，存入 middleWord arr
+        let middleWord = [];
+        data.forEach((name) => {
+          if (name.length == 3 || name.length == 2) {
+            middleWord.push(name[1]);
+          } else {
+            middleWord.push(name[2]);
+          }
+        });
+
+        //由中間字 middleWord arr中，取出重複的字，存入 repeat arr
+        repeat = middleWord.filter(
+          (word, index) => middleWord.indexOf(word) !== index
+        );
+
+        //由中間字 middleWord arr中，扣除 repeat arr 中的重複字，得到特殊字，存入 result
+        result = middleWord.filter((word) => repeat.indexOf(word) === -1);
+
+        //若 result 為空，打印"沒有"，否則打印出包含特殊字 result 的全名
+        if (result == "") {
+          console.log("沒有");
+        } else {
+          data.forEach((name) => {
+            if (name.includes(result)) {
+              console.log(name);
+            }
+          });
+        }
+      }
+
+      func("彭大牆", "陳王明雅", "吳明"); // print 彭大牆
+      func("郭靜雅", "王立強", "郭林靜宜", "郭立恆", "林花花"); // print 林花花
+      func("郭宣雅", "林靜宜", "郭宣恆", "林靜花"); // print 沒有
+      func("郭宣雅", "夏曼藍波安", "郭宣恆"); // print 夏曼藍波安
+
+      //task04
+      function getNumber(index) {
+        let sum = 0;
+        for (let i = 0; i < index; i++) {
+          if (i % 3 == 0 || i % 3 == 1) {
+            sum += 4;
+          } else {
+            sum -= 1;
+          }
+        }
+        console.log(sum);
+      }
+      getNumber(1); // print 4
+      getNumber(5); // print 15
+      getNumber(10); // print 25
+      getNumber(30); // print 70
+
+      //task05
+      function find(spaces, stat, n) {
+        let available = [];
+        let enoughSeats = [];
+        for (let i = 0; i < spaces.length; i++) {
+          available.push(spaces[i] * stat[i]);
+        }
+        enoughSeats = available.filter((seats) => seats >= n);
+        if (enoughSeats == []) {
+          console.log(-1);
+        } else {
+          console.log(available.indexOf(Math.min(...enoughSeats)));
+        }
+      }
+      find([3, 1, 5, 4, 3, 2], [0, 1, 0, 1, 1, 1], 2); // print 5
+      find([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4); // print -1
+      find([4, 6, 5, 8], [0, 1, 1, 1], 4); // print 2
+    </script>
+  </body>
+</html>
