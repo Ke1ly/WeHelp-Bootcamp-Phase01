@@ -2,6 +2,7 @@
 import json
 import csv
 import urllib.request as request
+import os
 
 src="https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment-1"
 src2="https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment-2"
@@ -16,14 +17,18 @@ with request.urlopen(src2) as response2:
 data2=json.loads(data2)
 
 spot_mrt={}
-with open ("spot.csv",mode="w",encoding="utf-8") as file_spot:
+with open ("spot.csv",mode="w",encoding="utf-8",newline="") as file_spot:
+    writer = csv.writer(file_spot,lineterminator="\n")
     for spot in spots:
         url=spot["filelist"].split('https')
         spot["filelist"]="https"+url[1]
         for d in data2["data"]:
             if d["SERIAL_NO"]==spot["SERIAL_NO"]:
                 spot_mrt.update({spot["stitle"]:d["MRT"]})
-                csv.writer(file_spot).writerow([spot["stitle"],d["address"][5:8],spot["longitude"],spot["latitude"],spot["filelist"]])
+                writer.writerow([spot["stitle"],d["address"][5:8],spot["longitude"],spot["latitude"],spot["filelist"]])
+    file_spot.seek(0, os.SEEK_END)
+    file_spot.seek(file_spot.tell()-1, os.SEEK_SET)
+    file_spot.truncate()
 
 grouped_mrt={}
 for key, value in spot_mrt.items():
@@ -32,18 +37,24 @@ for key, value in spot_mrt.items():
     else:
         grouped_mrt[value].append(key)
 
-with open ("mrt.csv",mode="w",encoding="utf-8") as file_mrt:
+with open ("mrt.csv",mode="w",encoding="utf-8",newline="") as file_mrt:
+    writer=csv.writer(file_mrt,lineterminator="\n")
     for mrt in grouped_mrt:
         row=[mrt]
         for spot in grouped_mrt[mrt]:
             row.append(spot)
-        csv.writer(file_mrt).writerow(row)
+        writer.writerow(row)
+    file_mrt.seek(0, os.SEEK_END)
+    file_mrt.seek(file_mrt.tell()-1, os.SEEK_SET)
+    file_mrt.truncate()
+
 
 
 # task02
 import urllib.request as req
 import csv
 import bs4
+import os
 
 def getTime(url):
     request=req.Request(url,headers={"Cookie":"over18=1","User-Agent":"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36"})
@@ -63,7 +74,8 @@ def getData(url):
         data=response.read().decode("utf-8")
     root=bs4.BeautifulSoup(data,"html.parser")
     blocks=root.find_all("div",class_="r-ent")
-    with open ("article.csv",mode="a",encoding="utf-8") as article:
+    with open ("article.csv",mode="a",encoding="utf-8",newline="") as article:
+        writer = csv.writer(article,lineterminator="\n")
         for block in blocks:
             title = block.find("div",class_="title")
             like = block.find("div",class_="nrec")
@@ -71,10 +83,12 @@ def getData(url):
                 timeURL="https://www.ptt.cc"+title.a["href"]
                 time = getTime(timeURL)
                 if like.span != None:
-                    csv.writer(article).writerow([title.a.string,like.span.string,time])
-      
+                    writer.writerow([title.a.string,like.span.string,time])
                 else:
-                    csv.writer(article).writerow([title.a.string,0,time])
+                    writer.writerow([title.a.string,0,time])
+        article.seek(0, os.SEEK_END)
+        article.seek(article.tell()-1, os.SEEK_SET)
+        article.truncate()
             
     nextpage=root.find("a",string="‹ 上頁")
     return nextpage["href"]
