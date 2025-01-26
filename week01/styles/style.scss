@@ -1,0 +1,293 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+body {
+  font-size: 20px;
+  nav {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 7;
+    section.left {
+      margin: 0.5rem 1rem;
+    }
+    section.right {
+      margin: 0.5rem 1rem;
+      ul {
+        display: flex;
+        li {
+          list-style: none;
+          a {
+            margin: 0rem 1rem;
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    }
+    section.hamburger-icon {
+      display: none;
+      justify-content: right;
+      margin: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    section.hamburger-menu {
+      display: none;
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      height: 100vh;
+      width: 40%;
+      background-color: rgba(255, 255, 255, 1);
+      z-index: 99;
+      box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+      i {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        padding: 1.25rem;
+        font-size: 17px;
+        cursor: pointer;
+      }
+      ul {
+        margin: 4rem 0rem;
+        li {
+          list-style: none;
+          a {
+            display: block;
+            padding: 0.75rem;
+            text-decoration: none;
+            text-align: center;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+  header {
+    height: 250px;
+    text-align: center;
+    background-color: rgb(217, 233, 237);
+    h3 {
+      font-size: 2em;
+      position: relative;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+  main {
+    width: 1200px;
+    margin-inline: auto;
+    section.promo {
+      display: flex;
+      margin-top: 10px;
+      div.promo {
+        display: flex;
+        flex-grow: 1;
+        background-color: rgb(217, 233, 237);
+        margin: 10px;
+        img {
+          object-fit: cover;
+          height: 50px;
+          width: 80px;
+        }
+        p {
+          margin-left: 1rem;
+          margin-block: auto;
+        }
+      }
+    }
+    section.title {
+      display: flex;
+      flex-wrap: wrap;
+      div.title {
+        height: 190px;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+        p {
+          width: 100%;
+          text-align: center;
+          background-color: rgba(255, 255, 255, 0.65);
+          padding: 0.25rem;
+
+          backdrop-filter: blur(1px);
+        }
+        i {
+          margin: 0.5rem;
+          color: rgba(255, 234, 128, 0.6);
+          cursor: pointer;
+        }
+      }
+      div.title1 {
+        flex-basis: 380px;
+        background-image: url("../img/t1.jpg");
+        background-size: cover;
+        background-position: center -50px;
+      }
+      div.title2 {
+        background-image: url("../img/t2.jpg");
+        background-size: cover;
+        background-position: top;
+      }
+      div.title3 {
+        background-image: url("../img/t3.jpg");
+        background-size: cover;
+        background-position: center -60px;
+      }
+      div.title4 {
+        background-image: url("../img/t4.jpg");
+        background-size: cover;
+        background-position: center -60px;
+      }
+
+      div.title5 {
+        background-image: url("../img/t5.jpg");
+        background-size: cover;
+        background-position: center 0px;
+      }
+      div.title2,
+      div.title3,
+      div.title4,
+      div.title5,
+      div.title7,
+      div.title8,
+      div.title9,
+      div.title10 {
+        flex-basis: 180px;
+      }
+      div.title6 {
+        flex-basis: 380px;
+
+        background-image: url("../img/t6.jpg");
+        background-size: cover;
+        background-position: center -40px;
+      }
+      div.title7 {
+        background-image: url("../img/t7.jpg");
+        background-size: cover;
+        background-position: center -15px;
+      }
+      div.title8 {
+        background-image: url("../img/t8.jpg");
+        background-size: cover;
+        background-position: top;
+      }
+      div.title9 {
+        background-image: url("../img/t9.jpg");
+        background-size: cover;
+        background-position: center -30px;
+      }
+
+      div.title10 {
+        background-image: url("../img/t10.jpg");
+        background-size: cover;
+        background-position: center -50px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  body {
+    nav {
+      section.hamburger-icon {
+        display: none;
+      }
+      section.hamburger-menu {
+        display: none;
+      }
+    }
+    main {
+      width: 90%;
+      section.promo {
+        flex-wrap: wrap;
+        div.promo1,
+        div.promo2 {
+          flex: 1 1 240px;
+        }
+        div.promo3 {
+          flex: 1 1 600px;
+        }
+      }
+      section.title {
+        div.title1,
+        div.title2,
+        div.title3,
+        div.title4,
+        div.title5,
+        div.title6,
+        div.title7,
+        div.title8 {
+          flex: 1 1 20%;
+        }
+        div.title9,
+        div.title10 {
+          flex: 1 1 45%;
+        }
+        div.title {
+          background-position: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    nav {
+      section.right {
+        display: none;
+      }
+      section.hamburger-icon {
+        display: block;
+      }
+    }
+    main {
+      section.promo {
+        div.promo {
+          flex: 1 1 100%;
+        }
+      }
+      section.title {
+        div.title {
+          flex: 1 1 100%;
+        }
+        div.title1 {
+          background-position: 50% 70%;
+        }
+        div.title2 {
+          background-position: 50% 20%;
+        }
+        div.title3 {
+          background-position: 50% 80%;
+        }
+        div.title5 {
+          background-position: 50% 45%;
+        }
+        div.title7 {
+          background-position: 50% 35%;
+        }
+        div.title8 {
+          background-position: 50% 20%;
+        }
+        div.title9 {
+          background-position: 50% 20%;
+        }
+        div.title10 {
+          background-position: 50% 65%;
+        }
+      }
+    }
+  }
+}
