@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task 03 Rendering</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav>
+      <section class="left">
+        <h1>MyWebsite</h1>
+      </section>
+      <section class="right">
+        <ul>
+          <li><a href="">Item 1</a></li>
+          <li><a href="">Item 2</a></li>
+          <li><a href="">Item 3</a></li>
+          <li><a href="">Item 4</a></li>
+        </ul>
+      </section>
+      <section class="hamburger-icon">
+        <i onclick="showSideMenu()" class="fa-solid fa-bars"></i>
+      </section>
+      <section class="hamburger-menu">
+        <i onclick="hideSideMenu()" class="fa-solid fa-x"></i>
+        <ul class="hamburger-menu">
+          <li><a href="">Item 1</a></li>
+          <li><a href="">Item 2</a></li>
+          <li><a href="">Item 3</a></li>
+          <li><a href="">Item 4</a></li>
+        </ul>
+      </section>
+    </nav>
+    <header>
+      <h3>Welcome to MyHome</h3>
+    </header>
+    <main>
+      <section class="promo-section"></section>
+      <section class="spot-section"></section>
+    </main>
+    <button class="button" onclick="renderSpots()">load more</button>
+    <template id="spot-temp">
+      <div class="spot">
+        <i class="fa-solid fa-star"></i>
+        <p class="title"></p>
+      </div>
+    </template>
+    <template id="promo-temp">
+      <div class="promo">
+        <img class="promo-img" alt="promotion" />
+        <p class="promo-title"></p>
+      </div>
+    </template>
+    <script>
+      function showSideMenu() {
+        let sidemenu = document.querySelector(".hamburger-menu");
+        sidemenu.style.display = "block";
+      }
+      function hideSideMenu() {
+        let sidemenu = document.querySelector(".hamburger-menu");
+        sidemenu.style.display = "none";
+      }
+
+      function SideMenu() {
+        if (window.innerWidth > 600) {
+          hideSideMenu();
+        }
+      }
+
+      window.addEventListener("resize", SideMenu);
+    </script>
+    <script src="./week03task.js"></script>
+  </body>
+</html>
