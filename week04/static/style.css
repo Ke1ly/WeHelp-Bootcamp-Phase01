@@ -1,0 +1,42 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body header {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: rgb(223, 229, 233);
+  font-size: 20px;
+  font-weight: 500;
+}
+body main div.signin,
+body main div.square {
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+body main div.signin form,
+body main div.square form {
+  padding-top: 0.5rem;
+  text-align: center;
+}
+body main div.signin form button,
+body main div.square form button {
+  margin: 0.5rem 0rem;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  border-width: 0px;
+  cursor: pointer;
+}
+body main div.signin form input,
+body main div.square form input {
+  margin: 0.5rem 0.15rem;
+  padding: 0.5rem;
+  border-radius: 15px;
+  border-width: 0px;
+  background-color: rgb(239, 237, 229);
+}/*# sourceMappingURL=style.css.map */

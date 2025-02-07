@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}" />
+  </head>
+  <body>
+    <header>歡迎光臨，請輸入帳號密碼</header>
+    <main>
+      <div class="signin">
+        <h3>登入系統</h3>
+        <form action="/signin" method="post" id="signin-form">
+          帳號 <input type="text" name="account" /> <br />密碼
+          <input type="password" name="password" /><br />
+          同意條款 <input type="checkbox" id="checkbox" /><br />
+          <button>登入</button>
+        </form>
+      </div>
+      <hr />
+      <div class="square">
+        <h3>計算正整數的平方</h3>
+        <form action="/square" id="square-form">
+          正整數 <input type="text" name="number" id="number" /><br />
+          <button>計算</button>
+        </form>
+      </div>
+    </main>
+    <script>
+      let signinForm = document.getElementById("signin-form");
+      signinForm.addEventListener("submit", function (event) {
+        let checkbox = document.getElementById("checkbox");
+        if (checkbox.checked == false) {
+          alert("Please check the checkbox first");
+          event.preventDefault();
+        }
+      });
+
+      let squareForm = document.getElementById("square-form");
+      squareForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        let number = document.getElementById("number").value;
+        number = Number(number);
+        if (number > 0) {
+          window.location.assign(`square?number=${number}`);
+        } else {
+          alert("Please enter a positive number");
+        }
+      });
+    </script>
+  </body>
+</html>
