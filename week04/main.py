@@ -40,7 +40,7 @@ def memberget(request: Request):
 def error(request: Request,message):
     return templates.TemplateResponse("error.html", {"request": request,"message":message})
 
-@app.get("/square")
+@app.get("/square/{number}")
 async def square(number, request: Request):
     number=int(number)
     return templates.TemplateResponse("square.html",{"request": request,"square":number*number})

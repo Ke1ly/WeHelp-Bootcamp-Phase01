@@ -43,7 +43,7 @@
         let number = document.getElementById("number").value;
         number = Number(number);
         if (number > 0) {
-          window.location.assign(`square?number=${number}`);
+          window.location.assign(`square/${number}`);
         } else {
           alert("Please enter a positive number");
         }
