@@ -11,6 +11,8 @@ follower_count INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Follower Count',
 time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Signup Time');
 ```
 
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task02.png?raw=true" width=200px>
+
 ## Task 03: SQL CRUD
 #### INSERT VALUES to the member table
 ```sql
@@ -26,55 +28,73 @@ VALUES (1, 'test', 'test', 'test' , 43, CURRENT_TIMESTAMP),
 ```sql
 SELECT * FROM member;
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task03-1&2.png?raw=true" width=550px>
 
 #### SELECT all rows from the member table, in descending order of time
 ```sql
 SELECT * FROM member ORDER BY time DESC;
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task03-3.png?raw=true" width=600px>
 
 #### SELECT total 3 rows, second to fourth, from the member table, in descending order of time
 ```sql
 SELECT * FROM member ORDER BY time DESC
 LIMIT 3 OFFSET 1;
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task03-4.png?raw=true" width=600px>
 
 #### SELECT rows where username equals to test
 ```sql
 SELECT * FROM member WHERE username = 'test';
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task03-5.png?raw=true" width=600px>
+
 #### SELECT rows where name includes the es keyword
 ```sql
 SELECT * FROM member WHERE name LIKE '%es%';
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task03-6.png?raw=true" width=600px>
 
 #### SELECT rows where both username and password equal to test
 ```sql
 SELECT * FROM member WHERE username = 'test' AND password = 'test';
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task03-7.png?raw=true" width=600px>
+
 
 #### UPDATE data in name column to test2 where username equals to test
 ```sql
 UPDATE member SET name = 'test2' WHERE username = 'test';
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task03-8.png?raw=true" width=600px>
+
 
 ## Task 04: SQL Aggregation Functions
 #### SELECT how many rows from the member table
 ```sql
 SELECT COUNT(*) FROM member;
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task04-1.png?raw=true" width=600px>
+
 #### SELECT the sum of follower_count of all the rows from the member table
 ```sql
 SELECT SUM(follower_count) FROM member;
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task04-2.png?raw=true" width=650px>
+
 #### SELECT the average of follower_count of all the rows from the member table
 ```sql
 SELECT AVG(follower_count) FROM member;
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task04-3.png?raw=true" width=650px>
+
 #### SELECT the average of follower_count of the first 2 rows, in descending order of follower_count, from the member table
 ```sql
 SELECT AVG(follower_count) 
 FROM (SELECT * FROM member ORDER BY follower_count DESC LIMIT 2) AS top2;
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task04-4.png?raw=true" width=650px>
+
 
 ## Task 05: SQL JOIN
 #### CREATE TABLE message in the website database and INSERT VALUES
@@ -101,26 +121,36 @@ VALUES(1,'Life is a journey, not a destination. Sometimes the best moments happe
 (5,'Sipping on tea and watching the world go by. There’s something so peaceful about quiet afternoons',220),
 (5,'Grabbing a cup of coffee and setting new goals for the week ahead',195);
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task05-1.png?raw=true" width=100%>
+
 
 #### SELECT all messages, including sender names
 ```sql
 SELECT * FROM message INNER JOIN member ON message.member_id=member.id;
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task05-2.png?raw=true" width=100%>
+
 
 #### SELECT all messages, including sender names, where sender username equals to test
 ```sql
 SELECT * FROM message INNER JOIN member ON message.member_id=member.id
 WHERE username ='test';
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task05-3.png?raw=true" width=100%>
+
 
 #### get the average like count of messages where sender username equals to test
 ```sql
 SELECT AVG(like_count) FROM message INNER JOIN member ON message.member_id=member.id
 WHERE username ='test';
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task05-4.png?raw=true" width=650px>
+
 
 #### get the average like count of messages GROUP BY sender username
 ```sql
 SELECT member.username, AVG(like_count) FROM message INNER JOIN member ON message.member_id=member.id
 GROUP BY member.username;
 ```
+<img src="https://github.com/Ke1ly/WeHelp-Bootcamp-Phase01/blob/main/week05/screenshots%20of%20the%20executing%20results/task05-5.png?raw=true" width=750px>
+
