@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Member</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='style_member.css') }}"
+    />
+  </head>
+  <body>
+    <header>歡迎光臨，這是會員頁</header>
+    <main>
+      <div class="welcome">
+        <p>{{name}}，歡迎登入</p>
+        <a href="/signout">登出系統</a>
+      </div>
+      <hr />
+      <div class="leave-message">
+        <p>快來留言吧</p>
+        <form action="/createMessage" method="post">
+          <label for="message">輸入留言內容</label>
+          <input type="text" name="message" id="message" />
+          <button>送出</button>
+        </form>
+      </div>
+      <hr />
+      <div class="messages">
+        {% for message in messages %}
+        <div class="message">
+          <p>{{message.name}} : {{message.content}}</p>
+          {% if member_id == message.member_id%}
+          <button messageid="{{message.id}}" onclick="deleteMessage(this)">
+            刪除
+          </button>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </main>
+    <script>
+      function deleteMessage(button) {
+        let messageId = button.getAttribute("messageid");
+        let confirmed = confirm("please confirm this deleting action");
+        if (confirmed) {
+          fetch(`/deleteMessage/${messageId}`, {
+            method: "POST",
+            credentials: "include",
+          })
+            .then((response) => {
+              if (response.ok) {
+                window.location.reload();
+              }
+            })
+            .catch((error) => console.error("Error:", error));
+        }
+      }
+    </script>
+  </body>
+</html>
