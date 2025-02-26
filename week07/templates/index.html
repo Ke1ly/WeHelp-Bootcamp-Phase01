@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}" />
+  </head>
+  <body>
+    <header>歡迎光臨，請註冊新帳號或登入</header>
+    <main>
+      <div class="sign-up">
+        <h3>註冊帳號</h3>
+        <form action="/signup" method="post" id="sign-up-form">
+          <label for="sign-up-name">姓名</label>
+          <input type="text" name="name" id="sign-up-name" /> <br />
+          <label for="sign-up-username">帳號</label>
+          <input type="text" name="username" id="sign-up-username" />
+          <br /><label for="sign-up-password">密碼</label>
+          <input type="password" name="password" id="sign-up-password" /><br />
+          <button>註冊</button>
+        </form>
+      </div>
+      <hr />
+      <div class="sign-in">
+        <h3>登入</h3>
+        <form action="/signin" method="post" id="sign-in-form">
+          <label for="sign-in-username">帳號</label>
+          <input type="text" name="username" id="sign-in-username" />
+          <br /><label for="sign-in-password">密碼</label>
+          <input type="password" name="password" id="sign-in-password" /><br />
+          <button>登入</button>
+        </form>
+      </div>
+    </main>
+    <script>
+      let signUpForm = document.getElementById("sign-up-form");
+      signUpForm.addEventListener("submit", function (event) {
+        let name = document.getElementById("sign-up-name");
+        let username = document.getElementById("sign-up-username");
+        let password = document.getElementById("sign-up-password");
+        if (name.value == "" || username.value == "" || password.value == "") {
+          event.preventDefault();
+          alert("please fill in all the required parts");
+        }
+      });
+
+      let signInForm = document.getElementById("sign-in-form");
+      signInForm.addEventListener("submit", function (event) {
+        let username = document.getElementById("sign-in-username");
+        let password = document.getElementById("sign-in-password");
+        if (username.value == "" || password.value == "") {
+          event.preventDefault();
+          alert("please fill in all the required parts");
+        }
+      });
+    </script>
+  </body>
+</html>

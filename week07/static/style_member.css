@@ -1,0 +1,87 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body header {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: rgb(223, 229, 233);
+  font-size: 20px;
+  font-weight: 500;
+}
+body main div.welcome,
+body main div.leave-message,
+body main div.member-query,
+body main div.name-update {
+  align-items: center;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+body main div.welcome form,
+body main div.leave-message form,
+body main div.member-query form,
+body main div.name-update form {
+  padding-top: 0.5rem;
+  text-align: center;
+}
+body main div.welcome button,
+body main div.leave-message button,
+body main div.member-query button,
+body main div.name-update button {
+  margin: 0.5rem 0rem;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  border-width: 0px;
+  cursor: pointer;
+}
+body main div.welcome input,
+body main div.leave-message input,
+body main div.member-query input,
+body main div.name-update input {
+  margin: 0.5rem 0.15rem;
+  padding: 0.5rem;
+  border-radius: 15px;
+  border-width: 0px;
+  background-color: rgb(239, 237, 229);
+}
+body main div.welcome a,
+body main div.leave-message a,
+body main div.member-query a,
+body main div.name-update a {
+  display: block;
+  margin-top: 1rem;
+  text-decoration: none;
+  border-radius: 15px;
+  background-color: rgb(240, 240, 240);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: black;
+}
+body main div.messages {
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: left;
+}
+body main div.messages div.message {
+  padding: 0.15rem;
+  display: flex;
+  flex-direction: row;
+}
+body main div.messages div.message p {
+  text-align: left;
+  font-size: 0.9rem;
+}
+body main div.messages div.message button {
+  margin: 0rem 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  border-width: 0px;
+  font-size: 0.7rem;
+  cursor: pointer;
+}/*# sourceMappingURL=style_member.css.map */

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Member</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='style_member.css') }}"
+    />
+  </head>
+  <body>
+    <header>歡迎光臨，這是會員頁</header>
+    <main>
+      <div class="welcome">
+        <p id="name">{{name}}，歡迎登入</p>
+        <a href="/signout">登出系統</a>
+      </div>
+      <hr />
+      <div class="leave-message">
+        <p>快來留言吧</p>
+        <form action="/createMessage" method="post">
+          <label for="message">輸入留言內容</label>
+          <input type="text" name="message" id="message" />
+          <button>送出</button>
+        </form>
+      </div>
+      <hr />
+      <div class="messages">
+        {% for message in messages %}
+        <div class="message">
+          <p>{{message.name}} : {{message.content}}</p>
+          {% if member_id == message.member_id%}
+          <button messageid="{{message.id}}" onclick="deleteMessage(this)">
+            刪除
+          </button>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      <hr />
+      <div class="member-query">
+        <p>以帳號查詢會員姓名</p>
+        <div style="display: block">
+          <input type="text" name="username" id="username" />
+          <button onclick="memberQuery()">查詢</button>
+        </div>
+        <p id="query-response"></p>
+      </div>
+      <hr />
+      <div class="name-update">
+        <p>更新我的姓名</p>
+        <div style="display: block">
+          <input type="text" name="newname" id="newname" />
+          <button onclick="nameUpdate()">更新</button>
+        </div>
+        <p id="name-update-response"></p>
+      </div>
+    </main>
+    <script>
+      function deleteMessage(button) {
+        const messageId = button.getAttribute("messageid");
+        const confirmed = confirm("please confirm this deleting action");
+        if (confirmed) {
+          fetch(`/deleteMessage/${messageId}`, {
+            method: "POST",
+          })
+            .then((response) => {
+              if (response.ok) {
+                window.location.reload();
+              }
+            })
+            .catch((error) => console.error("Error:", error));
+        }
+      }
+      async function memberQuery() {
+        const username = document.querySelector("#username").value;
+        let response = await fetch(`/api/member?username=${username}`, {
+          method: "GET",
+        });
+        let data = await response.json();
+        console.log(data);
+        if (data.data == null) {
+          document.getElementById("query-response").innerHTML = "No Data";
+        } else {
+          document.getElementById(
+            "query-response"
+          ).innerHTML = `${data.data.name}(${data.data.username})`;
+        }
+      }
+      async function nameUpdate() {
+        try {
+          const newName = document.querySelector("#newname").value;
+
+          let response = await fetch(`/api/member`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name: newName }),
+          });
+
+          let result = await response.json();
+          if (result.ok) {
+            document.getElementById("name-update-response").innerHTML =
+              "Updated";
+            document.getElementById("name").innerHTML = `${newName}，歡迎登入`;
+          } else {
+            document.getElementById("name-update-response").innerHTML =
+              "Failed to Update";
+          }
+        } catch (error) {
+          console.error("name update error:", error);
+        }
+      }
+    </script>
+  </body>
+</html>

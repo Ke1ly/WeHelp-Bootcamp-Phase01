@@ -1,0 +1,48 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body header {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: rgb(223, 229, 233);
+  font-size: 20px;
+  font-weight: 500;
+}
+body main div {
+  align-items: center;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+body main div form {
+  padding-top: 0.5rem;
+  text-align: center;
+}
+body main div button {
+  margin: 0.5rem 0rem;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  border-width: 0px;
+  cursor: pointer;
+}
+body main div input {
+  margin: 0.5rem 0.15rem;
+  padding: 0.5rem;
+  border-radius: 15px;
+  border-width: 0px;
+  background-color: rgb(239, 237, 229);
+}
+body main div a {
+  display: block;
+  margin-top: 1rem;
+  text-decoration: none;
+  border-radius: 15px;
+  background-color: rgb(240, 240, 240);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: black;
+}/*# sourceMappingURL=style.css.map */
